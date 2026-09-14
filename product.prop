@@ -31,3 +31,6 @@ persist.sys.fuse.passthrough.enable=true
 
 # RKPD
 remote_provisioning.hostname=remoteprovisioning.googleapis.com
+
+# maintainer
+ro.lunaris.maintainer=adarsh_8300u
