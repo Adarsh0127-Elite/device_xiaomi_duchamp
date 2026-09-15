@@ -86,6 +86,9 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth_le.prebuilt.xml \
     android.hardware.bluetooth.prebuilt.xml
 
+# Bypass Lock State for Fenrir
+$(call soong_config_set_bool,fastbootd,bypass_lock_state,true)
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.concurrent.prebuilt.xml \
