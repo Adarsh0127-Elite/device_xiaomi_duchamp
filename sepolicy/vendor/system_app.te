@@ -23,3 +23,12 @@ allow system_app sysfs_power_supply:file { write setattr };
 allow system_app self:netlink_kobject_uevent_socket { bind create read setopt };
 allow system_app sysfs_power_supply:file { write setattr };
 
+# Gamebar V4 
+allow system_app sysfs_power_supply:dir search;
+allow system_app sysfs_power_supply:file r_file_perms;
+
+allow system_app proc_stat:file { read open getattr };
+allow system_app sysfs_gpu:dir search;
+allow system_app sysfs_gpu:file r_file_perms;
+
+
