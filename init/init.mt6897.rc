@@ -339,6 +339,8 @@ on property:sys.boot_completed=1
     # Restrict permissions to socket file
     # to hide Magisk & co.
     chmod 440 /proc/net/unix
+    chown system system /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate
+    chmod 0664 /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate
 
 # CPU Little Cluster (Policy 0)
     chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
@@ -439,5 +441,4 @@ on property:persist.sys.parts.cpu.prime.max_frequency=*
     write /sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq ${persist.sys.parts.cpu.prime.max_frequency}
 on property:persist.sys.parts.cpu.prime.governor=*
     write /sys/devices/system/cpu/cpufreq/policy7/scaling_governor ${persist.sys.parts.cpu.prime.governor}
-
 
