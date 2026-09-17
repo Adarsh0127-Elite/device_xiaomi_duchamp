@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.Display;
 import android.view.Display.HdrCapabilities;
 import com.xiaomi.settings.display.ColorService
+import com.xiaomi.settings.turbocharging.TurboChargingService
 
 class BootCompletedReceiver : BroadcastReceiver() {
 
@@ -43,6 +44,10 @@ class BootCompletedReceiver : BroadcastReceiver() {
     private fun onLockedBootCompleted(context: Context) {
         // Display
         ColorService.startService(context)
+
+        // Start TurboChargingService
+        val turboChargingIntent = Intent(context, TurboChargingService::class.java)
+        context.startService(turboChargingIntent)
     }
 
     companion object {
