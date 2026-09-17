@@ -194,7 +194,7 @@ public class GameBar {
         updateTitleColor(prefs.getString("game_bar_title_color", "#FFFFFF"));
         updateValueColor(prefs.getString("game_bar_value_color", "#4CAF50"));
         updateOverlayFormat(prefs.getString("game_bar_format", "full"));
-        updateUpdateInterval(prefs.getString("game_bar_update_interval", "1000"));
+        updateUpdateInterval(prefs.getString("game_bar_update_interval", "500"));
         updatePosition(prefs.getString("game_bar_position", "top_left"));
 
         int spacing = prefs.getInt("game_bar_item_spacing", 8);
@@ -651,7 +651,7 @@ public class GameBar {
         try {
             mUpdateIntervalMs = Integer.parseInt(intervalStr);
         } catch (NumberFormatException e) {
-            mUpdateIntervalMs = 1000;
+            mUpdateIntervalMs = 500;
         }
         if (mIsShowing) {
             startUpdates();

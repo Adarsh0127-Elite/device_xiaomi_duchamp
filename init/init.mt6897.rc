@@ -339,6 +339,14 @@ on property:sys.boot_completed=1
     # Restrict permissions to socket file
     # to hide Magisk & co.
     chmod 440 /proc/net/unix
+
+# GameBarGPUClock
+    chown system system /sys/kernel/ged/hal/current_freqency
+    chmod 0664 /sys/kernel/ged/hal/current_freqency
+    chown system system /sys/kernel/ged/hal/previous_freqency
+    chmod 0664 /sys/kernel/ged/hal/previous_freqency
+
+# HTSR FIX
     chown system system /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate
     chmod 0664 /sys/devices/platform/goodix_ts.0/goodix_ts_report_rate
 

@@ -47,6 +47,7 @@
 
 # Gamebar GPU
 /sys/class/devfreq/13000000\.mali(/.*)?                                                                u:object_r:sysfs_gpu:s0
+/sys/kernel/ged/hal(/.*)?                      u:object_r:sysfs_gpu:s0
 
 # Core Control
 /sys/devices/system/cpu/cpu[0-7]/online                                                                u:object_r:vendor_sysfs_corecontrol:s0
