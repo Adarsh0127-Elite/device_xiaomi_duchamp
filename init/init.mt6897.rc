@@ -343,6 +343,12 @@ on property:sys.boot_completed=1
     # to hide Magisk & co.
     chmod 440 /proc/net/unix
 
+# GameBarGPUClock
+    chown system system /sys/kernel/ged/hal/current_freqency
+    chmod 0664 /sys/kernel/ged/hal/current_freqency
+    chown system system /sys/kernel/ged/hal/previous_freqency
+    chmod 0664 /sys/kernel/ged/hal/previous_freqency
+
 # CPU Little Cluster (Policy 0)
     chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
     chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq
