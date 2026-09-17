@@ -94,6 +94,7 @@ public class GameBar {
     private boolean mShowFps         = false;
 
     private boolean mShowGpuTemp     = false;
+    private boolean mShowGpuClock    = false;
 
     private boolean mLongPressEnabled      = false;
     private long mLongPressThresholdMs = 1000;
@@ -180,6 +181,7 @@ public class GameBar {
         mShowRam         = prefs.getBoolean("game_bar_ram_enable", false);
 
         mShowGpuTemp     = prefs.getBoolean("game_bar_gpu_temp_enable", false);
+        mShowGpuClock    = prefs.getBoolean("game_bar_gpu_clock_enable", false);
 
         mDoubleTapCaptureEnabled = prefs.getBoolean("game_bar_doubletap_capture", false);
         mSingleTapToggleEnabled  = prefs.getBoolean("game_bar_single_tap_toggle", false);
@@ -387,6 +389,12 @@ public class GameBar {
             statViews.add(createStatLine("GPU Temp", "N/A".equals(gpuTempStr) ? "N/A" : gpuTempStr + "°C"));
         }
 
+        // 8) GPU clock
+        if (mShowGpuClock) {
+            String gpuFreqStr = GameBarGpuInfo.getGpuFreq();
+            statViews.add(createStatLine("GPU Clock", gpuFreqStr));
+        }
+
         if ("side_by_side".equals(mSplitMode)) {
             mRootLayout.setOrientation(LinearLayout.HORIZONTAL);
             if ("minimal".equals(mOverlayFormat)) {
@@ -552,6 +560,7 @@ public class GameBar {
     public void setShowFps(boolean show)         { mShowFps = show; }
 
     public void setShowGpuTemp(boolean show)     { mShowGpuTemp = show; }
+    public void setShowGpuClock(boolean show)    { mShowGpuClock = show; }
 
     public void updateTextSize(int sp) {
         mTextSizeSp = sp;
