@@ -48,4 +48,8 @@
 # Core Control
 /sys/devices/system/cpu/cpu[0-7]/online                                                                u:object_r:vendor_sysfs_corecontrol:s0
 
+# Process and system statistics files
+/proc/stat                                                                                                                                                u:object_r:proc_stat:s0
+
+
 
