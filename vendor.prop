@@ -24,6 +24,10 @@ vendor.audio.usb.iems.period_us=5000
 vendor.audio.usb.super_hifi=true
 vendor.audiohal.telephonytx.type=2
 
+# Audio (Dolby)
+ro.vendor.audio.device.db=DB_XM
+ro.vendor.audio.device.dbcom=dolby_common
+
 # Bluetooth
 ro.bluetooth.a2dp_offload.supported=true
 
