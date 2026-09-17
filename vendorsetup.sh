@@ -14,3 +14,6 @@ cd packages/modules/Bluetooth
 git fetch https://github.com/mt6897-devs/packages_modules_Bluetooth.git
 git cherry-pick bea05a62eef1fcc37e5a10d476580a017a0bd32e
 cd ../../..
+
+echo "Cloning Dolby"
+git clone https://github.com/Adarsh0127-Elite/android_hardware_dolby.git hardware/dolby
