@@ -45,6 +45,7 @@ public class GameBarFragment extends PreferenceFragmentCompat {
     private SwitchPreferenceCompat mCpuTempSwitch;
     private SwitchPreferenceCompat mRamSwitch;
     private SwitchPreferenceCompat mGpuTempSwitch;
+    private SwitchPreferenceCompat mGpuClockSwitch;
     private Preference mCaptureStartPref;
     private Preference mCaptureStopPref;
     private Preference mCaptureExportPref;
@@ -81,6 +82,7 @@ public class GameBarFragment extends PreferenceFragmentCompat {
         mCpuTempSwitch      = findPreference("game_bar_cpu_temp_enable");
         mRamSwitch          = findPreference("game_bar_ram_enable");
         mGpuTempSwitch      = findPreference("game_bar_gpu_temp_enable");
+        mGpuClockSwitch     = findPreference("game_bar_gpu_clock_enable");
 
         mCaptureStartPref   = findPreference("game_bar_capture_start");
         mCaptureStopPref    = findPreference("game_bar_capture_stop");
@@ -197,6 +199,12 @@ public class GameBarFragment extends PreferenceFragmentCompat {
         if (mGpuTempSwitch != null) {
             mGpuTempSwitch.setOnPreferenceChangeListener((pref, newValue) -> {
                 mGameBar.setShowGpuTemp((boolean) newValue);
+                return true;
+            });
+        }
+        if (mGpuClockSwitch != null) {
+            mGpuClockSwitch.setOnPreferenceChangeListener((pref, newValue) -> {
+                mGameBar.setShowGpuClock((boolean) newValue);
                 return true;
             });
         }
