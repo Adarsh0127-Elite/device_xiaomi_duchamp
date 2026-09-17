@@ -311,3 +311,8 @@ on property:ro.boot.slot_suffix=_b
 # reset mdmode when modem crash happens in ATM
 on property:vendor.mtk.md1.status=reset
     setprop persist.vendor.atm.mdmode normal
+
+# Set thermal profile to 'Default' on boot
+on post-fs-data
+    write /sys/class/thermal/thermal_message/sconfig 0
+
