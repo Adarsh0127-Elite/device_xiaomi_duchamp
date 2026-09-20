@@ -9,3 +9,7 @@ type hal_mlipay_service, protected_service, service_manager_type, hal_service_ty
 
 # Mtdservice
 type hal_mtdservice_service, protected_service, service_manager_type, hal_service_type;
+
+# CitSensor
+type vendor_hal_citsensorservice_xiaomi_service, protected_service, service_manager_type, hal_service_type;
+
