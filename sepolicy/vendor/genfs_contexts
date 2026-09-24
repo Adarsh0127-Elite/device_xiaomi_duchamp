@@ -64,3 +64,5 @@ genfscon sysfs /devices/platform/soc/1cc04000.spmi/spmi-0/0-09/mt6685-rtc/wakeup
 genfscon sysfs /devices/platform/soc/1e000000.adspsys/wakeup                                                            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/1f800000.mmlsys-config/wakeup                                                      u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/power_supply/mtk-gauge/wakeup                                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1c00f000.dvfsrc                                                                     u:object_r:sysfs_gpu:s0
+
