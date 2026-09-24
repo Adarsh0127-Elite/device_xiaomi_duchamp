@@ -341,6 +341,7 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    $(LOCAL_PATH)/dolby \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/lineage/interfaces/power-libperfmgr \
@@ -414,4 +415,4 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, vendor/xiaomi/duchamp/duchamp-vendor.mk)
 
 # Dolby
-$(call inherit-product, hardware/dolby/dolby.mk)
+$(call inherit-product, $(LOCAL_PATH)/dolby/dolby.mk)
