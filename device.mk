@@ -256,7 +256,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Parts
 PRODUCT_PACKAGES += \
-    XiaomiParts
+    XiaomiParts \
+    privapp-permissions-com.xiaomi.settings.xml
 
 # Power
 PRODUCT_PACKAGES += \

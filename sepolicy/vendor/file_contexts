@@ -48,9 +48,11 @@
 /sys/class/power_supply/battery/constant_charge_current                                                u:object_r:sysfs_power_supply:s0
 /sys/class/power_supply/usb/online                                                                     u:object_r:sysfs_power_supply:s0
 
-# Gamebar GPU
+# Gamebar GPU and Devfreq
 /sys/class/devfreq/13000000\.mali(/.*)?                                                                u:object_r:sysfs_gpu:s0
-/sys/kernel/ged/hal(/.*)?                      u:object_r:sysfs_gpu:s0
+/sys/class/devfreq/mtk-dvfsrc-devfreq(/.*)?                                                             u:object_r:sysfs_gpu:s0
+/sys/devices/platform/soc/1c00f000\.dvfsrc(/.*)?                                                        u:object_r:sysfs_gpu:s0
+/sys/kernel/ged/hal(/.*)?                                                                              u:object_r:sysfs_gpu:s0
 
 # Core Control
 /sys/devices/system/cpu/cpu[0-7]/online                                                                u:object_r:vendor_sysfs_corecontrol:s0

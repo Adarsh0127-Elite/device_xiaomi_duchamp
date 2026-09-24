@@ -10,14 +10,38 @@ android_app {
     srcs: [
         "src/**/*.kt",
         "src/**/*.java",
+        "src/**/*.aidl",
     ],
+    resource_dirs: ["res"],
+    asset_dirs: ["assets"],
     platform_apis: true,
     privileged: true,
     system_ext_specific: true,
     static_libs: [
+        "androidx.activity_activity-compose",
+        "androidx.compose.animation_animation",
+        "androidx.compose.foundation_foundation",
+        "androidx.compose.material3_material3",
+        "androidx.compose.material_material-icons-extended",
+        "androidx.compose.runtime_runtime",
+        "androidx.compose.ui_ui",
+        "androidx.compose.ui_ui-text",
+        "androidx.compose.ui_ui-tooling-preview",
+        "androidx.lifecycle_lifecycle-runtime-compose",
         "androidx.core_core",
         "androidx.preference_preference",
+        "androidx.recyclerview_recyclerview",
         "org.lineageos.settings.resources",
         "vendor.xiaomi.hardware.displayfeature_aidl-V2-java",
     ],
+    required: [
+        "privapp-permissions-com.xiaomi.settings.xml",
+    ],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-com.xiaomi.settings.xml",
+    src: "permissions/privapp-permissions-com.xiaomi.settings.xml",
+    sub_dir: "permissions",
+    system_ext_specific: true,
 }
