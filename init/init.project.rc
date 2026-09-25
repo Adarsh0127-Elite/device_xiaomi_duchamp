@@ -37,6 +37,8 @@ on post-fs-data
     chmod 0666 /sys/class/power_supply/battery/charging_enabled
     chown system system /sys/class/power_supply/battery/battery_charging_enabled
     chmod 0666 /sys/class/power_supply/battery/battery_charging_enabled
+    chown system system /proc/mtk_battery_cmd
+    chmod 0755 /proc/mtk_battery_cmd
     chown system system /proc/mtk_battery_cmd/current_cmd
     chmod 0666 /proc/mtk_battery_cmd/current_cmd
     chown system system /proc/mtk_battery_cmd/en_power_path
@@ -59,6 +61,8 @@ on boot
     chmod 0666 /sys/class/power_supply/battery/charging_enabled
     chown system system /sys/class/power_supply/battery/battery_charging_enabled
     chmod 0666 /sys/class/power_supply/battery/battery_charging_enabled
+    chown system system /proc/mtk_battery_cmd
+    chmod 0755 /proc/mtk_battery_cmd
     chown system system /proc/mtk_battery_cmd/current_cmd
     chmod 0666 /proc/mtk_battery_cmd/current_cmd
     chown system system /proc/mtk_battery_cmd/en_power_path
@@ -129,6 +133,8 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service.mediatek
     socket audio_hw_socket seqpacket 0666 system system
 
 on property:sys.boot_completed=1
+    chown system system /proc/mtk_battery_cmd
+    chmod 0755 /proc/mtk_battery_cmd
     chown system system /proc/mtk_battery_cmd/current_cmd
     chmod 0666 /proc/mtk_battery_cmd/current_cmd
     chown system system /proc/mtk_battery_cmd/en_power_path

@@ -37,15 +37,14 @@ object ChargingUtils {
 
     // Candidate current_cmd nodes for MediaTek charger framework
     private val CANDIDATE_CURRENT_CMD_NODES = listOf(
-        PROC_CURRENT_CMD,
-        "/proc/mtk_battery_cmd/current_cmd"
+        PROC_CURRENT_CMD
     )
 
     // Candidate power path sysfs/proc nodes
     private val CANDIDATE_POWER_PATH_NODES = listOf(
         PROC_EN_POWER_PATH,
-        "/proc/mtk_battery_cmd/en_power_path",
-        "/sys/devices/platform/charger/en_power_path"
+        "/sys/devices/platform/charger/en_power_path",
+        "/sys/class/power_supply/mtk-master-charger/enable_power_path"
     )
 
     // Candidate suspend sysfs nodes
@@ -174,16 +173,15 @@ object ChargingUtils {
                 }
             }
 
-            // 3. Command MediaTek charger framework to stop charging battery cells
-            // Format: echo [cmd] [val] > current_cmd
-            // cmd 0: charging disable (1) / enable (0)
-            // cmd 1: usb unlimited enable (1) / disable (0)
+            // 3. Command MediaTek charger framework to bypass charging battery cells
+            // Format: echo [usb_unlimited] [disable] > current_cmd
+            // usb_unlimited = 1 (direct power path from USB to motherboard)
+            // disable = 1 (stop charging to battery cells)
             for (node in CANDIDATE_CURRENT_CMD_NODES) {
                 if (File(node).exists()) {
-                    if (writeOneLine(node, "0 1")) {
+                    if (writeOneLine(node, "1 1")) {
                         success = true
                     }
-                    writeOneLine(node, "1 1")
                 }
             }
 
@@ -199,15 +197,16 @@ object ChargingUtils {
                 }
             }
 
-            Log.i(TAG, "Hardware bypass ACTIVATED: current_cmd='0 1', charge_current=0, input_suspend=0 (success=$success)")
+            Log.i(TAG, "Hardware bypass ACTIVATED: current_cmd='1 1', charge_current=0, input_suspend=0 (success=$success)")
         } else {
             // 1. Command MediaTek charger framework to resume battery charging
+            // Format: echo [usb_unlimited] [disable] > current_cmd
+            // usb_unlimited = 0, disable = 0 (resume normal charging)
             for (node in CANDIDATE_CURRENT_CMD_NODES) {
                 if (File(node).exists()) {
                     if (writeOneLine(node, "0 0")) {
                         success = true
                     }
-                    writeOneLine(node, "1 0")
                 }
             }
 
@@ -289,7 +288,26 @@ object ChargingUtils {
     }
 
     fun isUsbOnline(context: Context? = null): Boolean {
-        // 1. Physical USB connection check via power_supply/usb/type
+        // 1. Android BatteryManager plugged extra (fastest & most authoritative in framework)
+        if (context != null) {
+            try {
+                val intent = context.registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+                if (intent != null) {
+                    val plugged = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0)
+                    if (plugged != 0) return true
+                    val status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, BatteryManager.BATTERY_STATUS_UNKNOWN)
+                    if (status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL) {
+                        return true
+                    }
+                }
+                val bm = context.getSystemService(Context.BATTERY_SERVICE) as? BatteryManager
+                if (bm?.isCharging == true) {
+                    return true
+                }
+            } catch (_: Exception) {}
+        }
+
+        // 2. Physical USB connection check via power_supply/usb/type
         val usbType = readOneLine("/sys/class/power_supply/usb/type")?.trim()
         if (!usbType.isNullOrEmpty() &&
             !usbType.equals("Unknown", ignoreCase = true) &&
@@ -298,27 +316,16 @@ object ChargingUtils {
             return true
         }
 
-        // 2. Candidate USB online nodes
+        // 3. Candidate USB online nodes
         for (node in CANDIDATE_USB_ONLINE_NODES) {
             val state = readOneLine(node)?.trim()
             if (state == "1") return true
         }
 
-        // 3. Type-C port power role
+        // 4. Type-C port power role
         val typecRole = readOneLine("/sys/class/typec/port0/power_role")?.trim()
         if (typecRole?.contains("sink", ignoreCase = true) == true) {
             return true
-        }
-
-        // 4. Android BatteryManager plugged extra
-        if (context != null) {
-            try {
-                val intent = context.registerReceiver(null, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
-                if (intent != null) {
-                    val plugged = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0)
-                    if (plugged != 0) return true
-                }
-            } catch (_: Exception) {}
         }
 
         return false

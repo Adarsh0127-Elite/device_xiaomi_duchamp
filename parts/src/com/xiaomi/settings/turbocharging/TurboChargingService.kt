@@ -89,14 +89,9 @@ class TurboChargingService : Service() {
         uEventObserver = object : UEventObserver() {
             override fun onUEvent(event: UEvent) {
                 val chargerStatus = event.get("POWER_SUPPLY_ONLINE")
-                if (chargerStatus != null) {
-                    if (chargerStatus == "1") {
-                        ChargingUtils.onPowerConnected(this@TurboChargingService)
-                        handler.post { updateMonitoringState() }
-                    } else if (chargerStatus == "0") {
-                        ChargingUtils.onPowerDisconnected(this@TurboChargingService)
-                        handler.post { updateMonitoringState() }
-                    }
+                if (chargerStatus == "1") {
+                    ChargingUtils.onPowerConnected(this@TurboChargingService)
+                    handler.post { updateMonitoringState() }
                 }
             }
         }
@@ -117,9 +112,8 @@ class TurboChargingService : Service() {
                     checkForegroundGameAndBypass()
                 }
                 ChargingUtils.PREF_BYPASS_ENABLED -> {
-                    if (!ChargingUtils.isBypassChargingActive(this)) {
-                        ChargingUtils.sAutoEngagedByGame = false
-                    }
+                    ChargingUtils.applySavedSettings(this)
+                    updateMonitoringState()
                 }
             }
         }
@@ -180,7 +174,11 @@ class TurboChargingService : Service() {
             }
 
             val foreground = ForegroundAppDetector.getForegroundPackageName(this)
-            if (foreground.isEmpty() || foreground == "Unknown") {
+            if (foreground.isEmpty() || foreground == "Unknown" ||
+                foreground == "com.xiaomi.settings" ||
+                foreground == "com.android.systemui" ||
+                foreground == "android"
+            ) {
                 return
             }
 
