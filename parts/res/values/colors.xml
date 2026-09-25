@@ -12,4 +12,17 @@
     <color name="gamebar_default_bg_color">#FF0D1117</color>
     <color name="gamebar_default_title_color">#FF9FCEDE</color>
     <color name="gamebar_default_value_color">#FFFFB347</color>
+
+    <!-- Charging UI Colors -->
+    <color name="charging_bypass_blue">#00E5FF</color>
+    <color name="charging_bypass_badge_bg">#1A00E5FF</color>
+    <color name="charging_turbo_amber">#FFAB00</color>
+    <color name="charging_turbo_badge_bg">#1AFFAB00</color>
+    <color name="charging_normal_green">#00E676</color>
+    <color name="charging_normal_badge_bg">#1A00E676</color>
+    <color name="charging_discharging_gray">#B0BEC5</color>
+    <color name="charging_discharging_badge_bg">#1AB0BEC5</color>
+    <color name="status_card_bg">#181C24</color>
+    <color name="status_chip_bg">#232834</color>
+    <color name="status_chip_text">#CFD8DC</color>
 </resources>

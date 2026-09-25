@@ -1,24 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 kenway214
+     SPDX-License-Identifier: Apache-2.0
+-->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res-auto"
-    android:title="@string/turbo_charge_title">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/charging_control_title">
 
-    <com.android.settingslib.widget.TopIntroPreference
-        android:key="turbo_top_intro"
-        android:title="@string/turbo_charge_summary"/>
+    <!-- Live Telemetry Status Card -->
+    <Preference
+        android:key="charging_status_card"
+        android:layout="@layout/preference_charging_status_card"
+        android:selectable="false" />
 
-    <SwitchPreferenceCompat
-        android:key="turbo_enable"
-        android:title="@string/turbo_enable_title"
-        android:defaultValue="true" />
+    <!-- Bypass Charging (Direct Power) -->
+    <PreferenceCategory
+        android:key="category_bypass_charging"
+        android:title="@string/bypass_charging_category_title">
 
-    <ListPreference
-        android:key="turbo_current"
-        android:title="@string/turbo_charge_current_pref_title"
-        android:entries="@array/turbo_modes_entries"
-        android:entryValues="@array/turbo_modes_values"
-        android:defaultValue="@integer/turbo_modes_default"
-        android:summary="%s" />
+        <SwitchPreferenceCompat
+            android:key="bypass_charging_enable"
+            android:title="@string/bypass_charging_title"
+            android:summary="@string/bypass_charging_summary"
+            android:icon="@drawable/ic_bypass_charging"
+            android:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            android:key="bypass_game_auto"
+            android:title="@string/bypass_game_auto_title"
+            android:summary="@string/bypass_game_auto_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="bypass_custom_apps"
+            android:title="@string/bypass_custom_apps_title"
+            android:summary="@string/bypass_custom_apps_summary" />
+
+    </PreferenceCategory>
+
+    <!-- Fast / Turbo Charging -->
+    <PreferenceCategory
+        android:key="category_turbo_charging"
+        android:title="@string/turbo_category_title">
+
+        <SwitchPreferenceCompat
+            android:key="turbo_enable"
+            android:title="@string/turbo_enable_title"
+            android:summary="@string/turbo_charge_summary"
+            android:icon="@drawable/ic_turbo_charging"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="turbo_current"
+            android:title="@string/turbo_charge_current_pref_title"
+            android:entries="@array/turbo_modes_entries"
+            android:entryValues="@array/turbo_modes_values"
+            android:defaultValue="@integer/turbo_modes_default"
+            android:summary="%s" />
+
+    </PreferenceCategory>
+
+    <!-- Footer Information -->
+    <com.android.settingslib.widget.FooterPreference
+        android:key="charging_footer"
+        android:title="@string/charging_footer_info"
+        android:selectable="false" />
 
 </PreferenceScreen>

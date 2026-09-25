@@ -1,0 +1,2 @@
+allow system_app proc_battery_cmd:dir search;
+allow system_app proc_battery_cmd:file rw_file_perms;

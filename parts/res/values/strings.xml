@@ -16,16 +16,59 @@
     <string name="thermalprofile_game">Game</string>
     <string name="thermalprofile_unknown">Unknown</string>
 
-    <!-- Turbo Charging -->
-    <string name="turbo_charge_title">Turbo Charging</string>
+    <!-- Charging & Power Control -->
+    <string name="charging_control_title">Charging Control</string>
+    <string name="turbo_charge_title">Charging Control</string>
+    <string name="turbo_charge_summary">Configure Bypass Charging and Turbo Charging</string>
+
+    <!-- Live Status Card -->
+    <string name="charging_status_card_title">Battery &amp; Charging Status</string>
+    <string name="battery_status_charging">Charging</string>
+    <string name="battery_status_discharging">Discharging</string>
+    <string name="battery_status_bypass">Direct Power Active</string>
+    <string name="battery_status_full">Fully Charged</string>
+    <string name="battery_status_not_charging">Not Charging</string>
+    <string name="battery_temp_format">%1$.1f °C</string>
+    <string name="battery_voltage_format">%1$.2f V</string>
+    <string name="battery_current_format">%1$d mA</string>
+    <string name="battery_chip_temp">Temp: %1$s</string>
+    <string name="battery_chip_voltage">Volt: %1$s</string>
+    <string name="battery_chip_current">Current: %1$s</string>
+    <string name="battery_connected_charger">Charger Connected</string>
+    <string name="battery_disconnected_charger">Operating on Battery</string>
+    <string name="bypass_charging_active">Direct Power Active • Battery Idling (Not Charging)</string>
+
+    <!-- Bypass Charging -->
+    <string name="bypass_charging_category_title">Bypass Charging</string>
+    <string name="bypass_charging_title">Bypass Charging</string>
+    <string name="bypass_charging_summary">Power the device directly from the charger without charging the battery cells. Keeps battery temperature cold, maintains battery percentage, and eliminates heat during gaming.</string>
+    <string name="bypass_game_auto_title">Auto-enable in games</string>
+    <string name="bypass_game_auto_summary">Automatically switch to bypass mode when connected to charger and playing games or custom apps</string>
+    <string name="bypass_custom_apps_title">Custom apps</string>
+    <string name="bypass_custom_apps_summary">Select games and apps that automatically toggle Bypass Charging</string>
+    <string name="bypass_custom_apps_summary_none">No apps selected. Tap to configure.</string>
+    <string name="bypass_custom_apps_summary_count">%1$d app(s) configured to auto-enable Bypass Charging</string>
+    <string name="bypass_custom_apps_search_hint">Search apps…</string>
+    <string name="bypass_charging_tile_label">Bypass Charge</string>
+    <string name="bypass_tile_connected_off">Ready</string>
+    <string name="bypass_tile_active">Active</string>
+    <string name="bypass_tile_unplugged">No Charger</string>
+    <string name="bypass_tile_toast_plug_in">Connect charger to use Bypass Charging</string>
+    <string name="bypass_tile_toast_enabled">Bypass Charging enabled (Direct Power)</string>
+    <string name="bypass_tile_toast_disabled">Bypass Charging disabled</string>
+
+    <!-- Turbo / Fast Charging -->
+    <string name="turbo_category_title">Fast Charging</string>
     <string name="turbo_enable_title">Enable Turbo Charging</string>
-    <string name="turbo_charge_summary">Enable Turbo Charging for different charging modes up to 67W</string>
-    <string name="turbo_charge_current_pref_title">Charging wattage</string>
-    <string name="turbo_mode_one">18W</string>
-    <string name="turbo_mode_two">30W</string>
-    <string name="turbo_mode_three">67W</string>
+    <string name="turbo_charge_current_pref_title">Charging wattage limit</string>
+    <string name="turbo_mode_one">18W (Standard)</string>
+    <string name="turbo_mode_two">30W (Fast)</string>
+    <string name="turbo_mode_three">67W (HyperCharge)</string>
     <string name="turbo_charge_tile_label">Turbo Charging</string>
     <string name="turbo_charge_tile_content_description">Toggle Turbo Charging</string>
+
+    <!-- Footer Information -->
+    <string name="charging_footer_info">Bypass Charging routes electrical power directly to the processor, display, and motherboard while idling the battery cells. This prevents high thermal throttling, reduces cycle degradation, and keeps the device cool during intensive tasks or gaming sessions.</string>
 
     <!-- Core Control -->
     <string name="core_control_title">Core Control</string>

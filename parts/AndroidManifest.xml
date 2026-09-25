@@ -6,8 +6,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xiaomi.settings"
-    android:versionCode="1"
-    android:versionName="1.0"
+    android:versionCode="2"
+    android:versionName="1.1"
     android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.GET_TASKS" />
@@ -81,14 +81,15 @@
             </intent-filter>
         </service>
 
-        <!-- Turbo Charging -->
+        <!-- Charging & Power Control -->
         <activity
             android:name=".turbocharging.TurboChargingActivity"
-            android:exported="false"
-            android:label="@string/turbo_charge_title"
+            android:exported="true"
+            android:label="@string/charging_control_title"
             android:theme="@style/Theme.SubSettingsBase">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.category"
@@ -98,9 +99,35 @@
                 android:resource="@string/turbo_charge_summary" />
         </activity>
 
+        <activity
+            android:name=".turbocharging.BypassChargingAppSelectActivity"
+            android:label="@string/bypass_custom_apps_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.xiaomi.settings.turbocharging.BYPASS_CUSTOM_APPS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Bypass Charging Tile Service -->
+        <service
+            android:name=".turbocharging.BypassChargingTileService"
+            android:icon="@drawable/ic_bypass_charging"
+            android:label="@string/bypass_charging_tile_label"
+            android:exported="true"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+
         <service
             android:name=".turbocharging.TurboChargingService"
-            android:permission="TurboChargingService">
+            android:exported="false">
         </service>
 
         <receiver

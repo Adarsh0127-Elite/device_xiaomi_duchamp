@@ -6,7 +6,26 @@ genfscon sysfs /devices/platform/11b72000.i2c/i2c-10/10-0055/power_supply       
 genfscon sysfs /devices/platform/11b72000.i2c/i2c-10/10-0055/verify_digest                               u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/11b72000.i2c/i2c-10/10-006f/power_supply                                u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:chg/power_supply       u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:chg/power_supply/battery/input_suspend       u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:chg/power_supply/battery/constant_charge_current u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:chg/power_supply/battery/charging_enabled u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:chg/power_supply/battery/battery_charging_enabled u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:chg/power_supply/battery/temp                    u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:chg/power_supply/battery/capacity                u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:chg/power_supply/battery/voltage_now             u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:chg/power_supply/battery/current_now             u:object_r:sysfs_power_supply:s0
 genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:mtk-gauge/power_supply u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:mtk-gauge/power_supply/battery/input_suspend u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:mtk-gauge/power_supply/battery/constant_charge_current u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:mtk-gauge/power_supply/battery/charging_enabled u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:mtk-gauge/power_supply/battery/battery_charging_enabled u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:mtk-gauge/power_supply/battery/temp              u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:mtk-gauge/power_supply/battery/capacity          u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:mtk-gauge/power_supply/battery/voltage_now       u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/11f01000.i2c/i2c-5/5-0034/11f01000.i2c:mt6375@34:mtk-gauge/power_supply/battery/current_now       u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/charger/power_supply/usb                                                                            u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/charger/power_supply/usb/online                                                                     u:object_r:sysfs_power_supply:s0
+genfscon sysfs /devices/platform/charger/power_supply/usb/type                                                                       u:object_r:sysfs_power_supply:s0
 genfscon sysfs /devices/platform/pd-adapter/Charging_Adapter                                             u:object_r:sysfs_batteryinfo:s0
 
 # Core Control

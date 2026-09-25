@@ -91,7 +91,12 @@
 /dev/camera_eeprom*       0660   system     camera
 
 # Charger
-/sys/class/power_supply/battery input_suspend 0660 system system
+/sys/class/power_supply/battery input_suspend 0666 system system
+/sys/class/power_supply/battery constant_charge_current 0666 system system
+/sys/class/power_supply/battery charging_enabled 0666 system system
+/sys/class/power_supply/battery battery_charging_enabled 0666 system system
+/sys/class/power_supply/usb online 0664 system system
+/sys/class/power_supply/usb type 0664 system system
 
 # Mali node
 /dev/mali0                0666   system     graphics

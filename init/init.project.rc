@@ -30,7 +30,17 @@ on post-fs-data
     chmod 0664 /sys/class/mi_display/disp-DSI-0/thermal_hbm_disabled
     chown system system /sys/class/thermal/thermal_message/charger_temp
     chown system system /sys/class/power_supply/battery/constant_charge_current
-    chmod 0664 /sys/class/power_supply/battery/constant_charge_current
+    chmod 0666 /sys/class/power_supply/battery/constant_charge_current
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/battery_charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/battery_charging_enabled
+    chown system system /proc/mtk_battery_cmd/current_cmd
+    chmod 0666 /proc/mtk_battery_cmd/current_cmd
+    chown system system /proc/mtk_battery_cmd/en_power_path
+    chmod 0666 /proc/mtk_battery_cmd/en_power_path
 
 # smart pa start
 on property:vendor.audio.cit.spkcal.copy=true
@@ -40,6 +50,24 @@ on property:vendor.audio.cit.spkcal.copy=true
     chmod 666 /data/vendor/cit/aw_cali.bin
 
 on boot
+    # Charging control
+    chown system system /sys/class/power_supply/battery/constant_charge_current
+    chmod 0666 /sys/class/power_supply/battery/constant_charge_current
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/battery_charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/battery_charging_enabled
+    chown system system /proc/mtk_battery_cmd/current_cmd
+    chmod 0666 /proc/mtk_battery_cmd/current_cmd
+    chown system system /proc/mtk_battery_cmd/en_power_path
+    chmod 0666 /proc/mtk_battery_cmd/en_power_path
+    chown system system /sys/class/power_supply/usb/online
+    chmod 0664 /sys/class/power_supply/usb/online
+    chown system system /sys/class/power_supply/usb/type
+    chmod 0664 /sys/class/power_supply/usb/type
+
     # Display feature sysfs node
     chown system system /sys/class/mi_display/disp-DSI-0/disp_param
     chmod 0664 /sys/class/mi_display/disp-DSI-0/disp_param
@@ -99,3 +127,16 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service.mediatek
     task_profiles ProcessCapacityHigh HighPerformance
     onrestart restart audioserver
     socket audio_hw_socket seqpacket 0666 system system
+
+on property:sys.boot_completed=1
+    chown system system /proc/mtk_battery_cmd/current_cmd
+    chmod 0666 /proc/mtk_battery_cmd/current_cmd
+    chown system system /proc/mtk_battery_cmd/en_power_path
+    chmod 0666 /proc/mtk_battery_cmd/en_power_path
+    chown system system /sys/class/power_supply/battery/constant_charge_current
+    chmod 0666 /sys/class/power_supply/battery/constant_charge_current
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/battery_charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/battery_charging_enabled
+
