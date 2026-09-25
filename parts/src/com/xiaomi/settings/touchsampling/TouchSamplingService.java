@@ -186,6 +186,9 @@ public class TouchSamplingService extends Service {
      * @param state 1 to enable high touch sampling rate, 0 to disable it.
      */
     private void applyTouchSamplingRate(int state) {
+        if (!FileUtils.fileExists(TouchSamplingUtils.HTSR_FILE)) {
+            return;
+        }
         String currentState = FileUtils.readOneLine(TouchSamplingUtils.HTSR_FILE);
         if (currentState == null || !currentState.equals(Integer.toString(state))) {
             Log.d(TAG, "Applying touch sampling rate: " + state);

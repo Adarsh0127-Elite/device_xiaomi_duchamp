@@ -24,9 +24,18 @@ public class TurboChargingActivity extends CollapsingToolbarBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         getFragmentManager()
                 .beginTransaction()
                 .replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame, new TurboChargingFragment())
                 .commit();
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        finish();
+        return true;
     }
 }

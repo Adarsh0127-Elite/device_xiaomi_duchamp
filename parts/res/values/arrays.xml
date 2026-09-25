@@ -18,6 +18,7 @@
         <item>22000000</item>
     </string-array>
 
+
     <!-- FPS Overlay -->
     <string-array name="game_bar_fps_method_entries">
         <item>New API (Default)</item>

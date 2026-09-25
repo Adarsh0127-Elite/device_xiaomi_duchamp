@@ -83,6 +83,14 @@ object GameBarBatteryInfo {
         }
     }
 
+    fun isBypassChargingActive(context: Context? = null): Boolean {
+        return try {
+            com.xiaomi.settings.turbocharging.ChargingUtils.isBypassChargingActive(context)
+        } catch (_: Exception) {
+            readLine("/sys/class/power_supply/battery/constant_charge_current") == "0"
+        }
+    }
+
     private fun readLine(path: String): String? {
         return try {
             BufferedReader(FileReader(path)).use { it.readLine() }
