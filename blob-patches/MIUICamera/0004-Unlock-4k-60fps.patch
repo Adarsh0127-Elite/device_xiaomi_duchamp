@@ -1,0 +1,30 @@
+From 35039d0751b6dce201f92f5dceecd67ee0656401 Mon Sep 17 00:00:00 2001
+From: Adarsh0127-Elite <adarshmoharana027@gmail.com>
+Date: Sun, 27 Sep 2026 04:35:12 +0000
+Subject: [PATCH] MiuiCamera: Unlock 4K 60FPS video recording
+
+Force capability check for 60fps video quality to return true,
+enabling 4K 60FPS video recording option in the camera UI.
+
+Signed-off-by: Adarsh0127-Elite <adarshmoharana027@gmail.com>
+---
+ smali/b0/j0.smali | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/smali/b0/j0.smali b/smali/b0/j0.smali
+index 00db4c4..c96ce2c 100644
+--- a/smali/b0/j0.smali
++++ b/smali/b0/j0.smali
+@@ -805,6 +805,10 @@
+ .method public static y(IILZ5/d;)Z
+     .locals 3
+ 
++    const/4 v0, 0x1
++
++    return v0
++
+     invoke-static {p2}, LZ5/e;->Z(LZ5/d;)Ljava/util/ArrayList;
+ 
+     move-result-object p2
+-- 
+2.43.0
