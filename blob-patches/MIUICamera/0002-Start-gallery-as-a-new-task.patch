@@ -1,0 +1,50 @@
+From 3696351e9632979b0f824d49695d2f25296cd18e Mon Sep 17 00:00:00 2001
+From: Arian <arian.kulmer@web.de>
+Date: Wed, 30 Sep 2026 05:33:00 +0000
+Subject: [PATCH] Start gallery as a new task
+
+When launched from lockscreen user will have to unlock for the gallery
+to be opened, then the gallery is living in the camera process which is wrong.
+Let it create a new task for it.
+
+Signed-off-by: Adarsh0127-Elite <adarshmoharana027@gmail.com>
+---
+ smali/com/android/camera/Camera.smali | 5 +++++
+ smali_classes5/jn/a$c.smali           | 5 +++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/smali/com/android/camera/Camera.smali b/smali/com/android/camera/Camera.smali
+index 5a6d38b..29d4500 100644
+--- a/smali/com/android/camera/Camera.smali
++++ b/smali/com/android/camera/Camera.smali
+@@ -23354,6 +23354,11 @@
+ 
+     invoke-virtual {v0, v2}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
+ 
++    # FLAG_ACTIVITY_NEW_TASK
++    const v2, 0x10000000
++
++    invoke-virtual {v0, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
++
+     if-nez p2, :cond_16
+ 
+     invoke-virtual {v7, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+diff --git a/smali_classes5/jn/a$c.smali b/smali_classes5/jn/a$c.smali
+index 3b26261..d4e11fb 100644
+--- a/smali_classes5/jn/a$c.smali
++++ b/smali_classes5/jn/a$c.smali
+@@ -459,6 +459,11 @@
+ 
+     invoke-virtual {p1, v0}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
+ 
++    # FLAG_ACTIVITY_NEW_TASK
++    const v0, 0x10000000
++
++    invoke-virtual {p1, v0}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
++
+     invoke-virtual {v2, p1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+ 
+     invoke-static {v2}, LVa/l;->a(Landroid/app/Activity;)V
+-- 
+2.43.0
+

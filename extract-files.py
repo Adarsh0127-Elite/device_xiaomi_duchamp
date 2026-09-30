@@ -58,6 +58,16 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/lib64/mt6897/lib3a.ae.stat.so'): blob_fixup()
         .add_needed('liblog.so'),
 
+    'vendor/lib64/mt6897/lib3a.awb.core.so': blob_fixup()
+        .sig_replace('88 81 9d 52 28 00 a0 72 68 6a 68 78 1f 05 00 71 c0 00 00 54 08 84 9d 52 28 00 a0 72 68 6a 68 78 1f 05 00 71 c1 00 00 54 08 ea 87 52 48 00 a0 72 68 6a 68 f8 08 8d 4c f9 e8 0f 00 f9',
+                     '88 81 9d 52 28 00 a0 72 68 6a 68 78 1f 05 00 71 08 84 9d 52 28 00 a0 72 68 6a 68 78 04 19 41 7a e1 00 00 54 08 ea 87 52 48 00 a0 72 68 6a 68 f8 68 00 00 b4 08 8d 4c f9 e8 0f 00 f9')
+        .sig_replace('68 6a 68 78 1f 05 00 71 e0 00 00 54 0a 84 9d 52 2a 00 a0 72 6a 6a 6a 78 5f 05 00 71 ea 03 1f 2a 21 02 00 54 0a ea 87 52 4a 00 a0 72 6a 6a 6a f8 0b 7c 88 52 4a 69 6b b8',
+                     '68 6a 68 78 1f 05 00 71 0a 84 9d 52 2a 00 a0 72 6a 6a 6a 78 44 19 41 7a 41 02 00 54 0a ea 87 52 4a 00 a0 72 6a 6a 6a f8 ca 01 00 b4 0b 7c 88 52 4a 69 6b b8 1f 20 03 d5')
+        .sig_replace('69 3a 41 f9 e9 07 00 f9 c0 00 00 54 08 84 9d 52 28 00 a0 72 68 6a 68 78 1f 05 00 71 c1 00 00 54 08 ea 87 52 48 00 a0 72 68 6a 68 f8 08 8d 4c f9 e8 0f 00 f9',
+                     '69 3a 41 f9 e9 07 00 f9 08 84 9d 52 28 00 a0 72 68 6a 68 78 04 19 41 7a e1 00 00 54 08 ea 87 52 48 00 a0 72 68 6a 68 f8 68 00 00 b4 08 8d 4c f9 e8 0f 00 f9')
+        .sig_replace('08 ea 87 52 48 00 a0 72 13 00 08 8b 7a 02 40 f9 f8 03 00 aa e0 c3 00 91 82 10 80 52 54 53 40 b9 e1 03 1f 2a ff c3 00 b9 ff 02 00 f9',
+                     '08 ea 87 52 48 00 a0 72 13 00 08 8b 7a 02 40 f9 5a 17 00 b4 f8 03 00 aa e0 c3 00 91 82 10 80 52 54 53 40 b9 e1 03 1f 2a ff 7e 00 a9'),
+
     'vendor/lib64/mt6897/libmtkcam_hal_aidl_common.so': blob_fixup()
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),
 

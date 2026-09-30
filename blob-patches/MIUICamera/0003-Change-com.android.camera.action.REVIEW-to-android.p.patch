@@ -1,0 +1,61 @@
+From d200453ed000b7bac67549c77677b25ce14b515f Mon Sep 17 00:00:00 2001
+From: Arian <arian.kulmer@web.de>
+Date: Wed, 30 Sep 2026 05:33:16 +0000
+Subject: [PATCH] Change com.android.camera.action.REVIEW to
+ android.provider.action.REVIEW
+
+This is the standard intent for review actions
+
+Signed-off-by: Adarsh0127-Elite <adarshmoharana027@gmail.com>
+---
+ smali/F1/V2.smali         | 4 ++--
+ smali_classes5/bn/g.smali | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/smali/F1/V2.smali b/smali/F1/V2.smali
+index bbb6530..5d5eccd 100644
+--- a/smali/F1/V2.smali
++++ b/smali/F1/V2.smali
+@@ -87,7 +87,7 @@
+ 
+     const/4 v4, 0x0
+ 
+-    const-string v5, "com.android.camera.action.REVIEW"
++    const-string v5, "android.provider.action.REVIEW"
+ 
+     if-eqz v1, :cond_0
+ 
+@@ -131,7 +131,7 @@
+     :cond_1
+     new-array v1, v4, [Ljava/lang/Object;
+ 
+-    const-string v6, "gotoGallery: com.android.camera.action.REVIEW"
++    const-string v6, "gotoGallery: android.provider.action.REVIEW"
+ 
+     invoke-static {v3, v6, v1}, Lcom/android/camera/log/Log;->d(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+ 
+diff --git a/smali_classes5/bn/g.smali b/smali_classes5/bn/g.smali
+index 7d60c2d..52c2fff 100644
+--- a/smali_classes5/bn/g.smali
++++ b/smali_classes5/bn/g.smali
+@@ -256,7 +256,7 @@
+ 
+     const/4 v3, 0x0
+ 
+-    const-string v4, "com.android.camera.action.REVIEW"
++    const-string v4, "android.provider.action.REVIEW"
+ 
+     if-eqz v1, :cond_0
+ 
+@@ -302,7 +302,7 @@
+ 
+     const-string v5, "GalleryHelper"
+ 
+-    const-string v6, "gotoGallery: com.android.camera.action.REVIEW"
++    const-string v6, "gotoGallery: android.provider.action.REVIEW"
+ 
+     invoke-static {v5, v6, v1}, Lcom/android/camera/log/Log;->d(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+ 
+-- 
+2.43.0
+

@@ -1,0 +1,111 @@
+From 118b5af0e2304dcc6aa5d197a3c4dbf348087cb6 Mon Sep 17 00:00:00 2001
+From: Arian <arian.kulmer@web.de>
+Date: Wed, 30 Sep 2026 05:32:35 +0000
+Subject: [PATCH] Support third party galleries
+
+Signed-off-by: Adarsh0127-Elite <adarshmoharana027@gmail.com>
+---
+ smali/F1/V2.smali                     |  4 ----
+ smali/com/android/camera/Camera.smali |  4 +++-
+ smali_classes5/bh/e.smali             | 22 ----------------------
+ smali_classes5/bn/g.smali             |  4 ----
+ smali_classes5/jn/a$c.smali           |  4 ++--
+ 5 files changed, 5 insertions(+), 33 deletions(-)
+
+diff --git a/smali/F1/V2.smali b/smali/F1/V2.smali
+index 7c0d852..bbb6530 100644
+--- a/smali/F1/V2.smali
++++ b/smali/F1/V2.smali
+@@ -140,10 +140,6 @@
+     invoke-direct {v1, v5, p2}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+ 
+     :goto_0
+-    const-string p2, "com.miui.gallery"
+-
+-    invoke-virtual {v1, p2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+-
+     const-string p2, "from_MiuiCamera"
+ 
+     invoke-virtual {v1, p2, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+diff --git a/smali/com/android/camera/Camera.smali b/smali/com/android/camera/Camera.smali
+index 769ee95..5a6d38b 100644
+--- a/smali/com/android/camera/Camera.smali
++++ b/smali/com/android/camera/Camera.smali
+@@ -23350,7 +23350,9 @@
+ 
+     invoke-direct {v0, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+ 
+-    invoke-virtual {v0, v2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
++    const-string v2, "android.intent.category.APP_GALLERY"
++
++    invoke-virtual {v0, v2}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
+ 
+     if-nez p2, :cond_16
+ 
+diff --git a/smali_classes5/bh/e.smali b/smali_classes5/bh/e.smali
+index d75f603..63df60c 100644
+--- a/smali_classes5/bh/e.smali
++++ b/smali_classes5/bh/e.smali
+@@ -343,28 +343,6 @@
+ 
+     invoke-static {v0, v4, v3}, Lcom/android/camera/log/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+ 
+-    invoke-static {}, Lcom/xiaomi/camera/mivi/MIVISDKConfig;->getInstance()Lcom/xiaomi/camera/mivi/MIVISDKConfig;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v3}, Lcom/xiaomi/camera/mivi/MIVISDKConfig;->isAndroidGo()Z
+-
+-    move-result v3
+-
+-    if-nez v3, :cond_2
+-
+-    invoke-static {}, Lcom/xiaomi/camera/mivi/MIVISDKConfig;->getInstance()Lcom/xiaomi/camera/mivi/MIVISDKConfig;
+-
+-    move-result-object v3
+-
+-    invoke-virtual {v3}, Lcom/xiaomi/camera/mivi/MIVISDKConfig;->isAndroidOne()Z
+-
+-    move-result v3
+-
+-    if-nez v3, :cond_2
+-
+-    const/4 v5, 0x4
+-
+     goto :goto_0
+ 
+     :goto_3
+diff --git a/smali_classes5/bn/g.smali b/smali_classes5/bn/g.smali
+index c3d1ee5..7d60c2d 100644
+--- a/smali_classes5/bn/g.smali
++++ b/smali_classes5/bn/g.smali
+@@ -311,10 +311,6 @@
+     invoke-direct {v1, v4, p3}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+ 
+     :goto_0
+-    const-string p3, "com.miui.gallery"
+-
+-    invoke-virtual {v1, p3}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+-
+     const-string p3, "from_MiuiCamera"
+ 
+     invoke-virtual {v1, p3, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
+diff --git a/smali_classes5/jn/a$c.smali b/smali_classes5/jn/a$c.smali
+index 119c686..3b26261 100644
+--- a/smali_classes5/jn/a$c.smali
++++ b/smali_classes5/jn/a$c.smali
+@@ -455,9 +455,9 @@
+ 
+     invoke-direct {p1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+ 
+-    const-string v0, "com.miui.gallery"
++    const-string v0, "android.intent.category.APP_GALLERY"
+ 
+-    invoke-virtual {p1, v0}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
++    invoke-virtual {p1, v0}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
+ 
+     invoke-virtual {v2, p1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+ 
+-- 
+2.43.0
+
