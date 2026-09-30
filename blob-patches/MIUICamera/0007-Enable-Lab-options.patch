@@ -1,0 +1,32 @@
+From 9044eb8bd619486c2b6154593fdd13ee36320d36 Mon Sep 17 00:00:00 2001
+From: Adarsh0127-Elite <adarshmoharana027@gmail.com>
+Date: Wed, 30 Sep 2026 15:37:05 +0000
+Subject: [PATCH 7/9] MiuiCamera: Enable Lab options
+
+Force enable Lab options in camera settings.
+
+Signed-off-by: Adarsh0127-Elite <adarshmoharana027@gmail.com>
+---
+ smali_classes4/Va/b.smali | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/smali_classes4/Va/b.smali b/smali_classes4/Va/b.smali
+index 83f040ea..4165c982 100644
+--- a/smali_classes4/Va/b.smali
++++ b/smali_classes4/Va/b.smali
+@@ -391,11 +391,7 @@
+ 
+     sput-boolean v0, LVa/b;->y:Z
+ 
+-    const-string v0, "camera.lab.options"
+-
+-    invoke-static {v0, v2}, LVr/g;->c(Ljava/lang/String;Z)Z
+-
+-    move-result v0
++    const/4 v0, 0x1
+ 
+     sput-boolean v0, LVa/b;->z:Z
+ 
+-- 
+2.43.0
+

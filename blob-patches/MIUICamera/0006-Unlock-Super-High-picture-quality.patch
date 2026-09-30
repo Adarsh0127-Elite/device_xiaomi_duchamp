@@ -1,0 +1,28 @@
+From 1059fca7638d19711f0c2126352c560ec3b83b6f Mon Sep 17 00:00:00 2001
+From: Adarsh0127-Elite <adarshmoharana027@gmail.com>
+Date: Wed, 30 Sep 2026 15:36:48 +0000
+Subject: [PATCH 6/9] MiuiCamera: Unlock Super High picture quality
+
+Force capability check for Super High picture quality to return true.
+
+Signed-off-by: Adarsh0127-Elite <adarshmoharana027@gmail.com>
+---
+ ...騟験騑驒騑騕驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smali_classes4/騟験騑驒騑騕驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali b/smali_classes4/騟験騑驒騑騕驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali
+index cf0b4862..ddc71ae6 100644
+--- a/smali_classes4/騟験騑驒騑騕驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali
++++ b/smali_classes4/騟験騑驒騑騕驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali
+@@ -4936,7 +4936,7 @@
+ .method public t8()Z
+     .locals 0
+ 
+-    instance-of p0, p0, L얇얋얉엊얉얍엊얀얁얒얍얇얁엊얥양얖얋얖얅;
++    const/4 p0, 0x1
+ 
+     return p0
+ .end method
+-- 
+2.43.0
+

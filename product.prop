@@ -35,3 +35,9 @@ remote_provisioning.hostname=remoteprovisioning.googleapis.com
 
 # maintainer
 ro.lunaris.maintainer=adarsh_8300u
+
+# Camera
+camera.lab.options=true
+persist.camera.feature.video_watermark=1
+ro.boot.product.theme_customize=Madrid
+ro.theme_customize=LCC
