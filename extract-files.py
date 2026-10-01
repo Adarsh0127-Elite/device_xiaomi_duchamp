@@ -66,7 +66,9 @@ blob_fixups: blob_fixups_user_type = {
         .sig_replace('69 3a 41 f9 e9 07 00 f9 c0 00 00 54 08 84 9d 52 28 00 a0 72 68 6a 68 78 1f 05 00 71 c1 00 00 54 08 ea 87 52 48 00 a0 72 68 6a 68 f8 08 8d 4c f9 e8 0f 00 f9',
                      '69 3a 41 f9 e9 07 00 f9 08 84 9d 52 28 00 a0 72 68 6a 68 78 04 19 41 7a e1 00 00 54 08 ea 87 52 48 00 a0 72 68 6a 68 f8 68 00 00 b4 08 8d 4c f9 e8 0f 00 f9')
         .sig_replace('08 ea 87 52 48 00 a0 72 13 00 08 8b 7a 02 40 f9 f8 03 00 aa e0 c3 00 91 82 10 80 52 54 53 40 b9 e1 03 1f 2a ff c3 00 b9 ff 02 00 f9',
-                     '08 ea 87 52 48 00 a0 72 13 00 08 8b 7a 02 40 f9 5a 17 00 b4 f8 03 00 aa e0 c3 00 91 82 10 80 52 54 53 40 b9 e1 03 1f 2a ff 7e 00 a9'),
+                     '08 ea 87 52 48 00 a0 72 13 00 08 8b 7a 02 40 f9 5a 17 00 b4 f8 03 00 aa e0 c3 00 91 82 10 80 52 54 53 40 b9 e1 03 1f 2a ff 7e 00 a9')
+        .sig_replace('a0 00 00 54 e8 c3 40 f9 08 01 40 79 1f 05 00 71 41 02 00 54 e8 d3 40 f9 00 01 40 f9 08 05 89 52 08 68 68 b8 1f 05 00 71 81 01 00 54',
+                     'e8 c3 40 f9 08 01 40 79 04 19 41 7a 61 02 00 54 e8 d3 40 f9 00 01 40 f9 00 02 00 b4 08 05 89 52 08 68 68 b8 1f 05 00 71 81 01 00 54'),
 
     'vendor/lib64/mt6897/libmtkcam_hal_aidl_common.so': blob_fixup()
         .replace_needed('android.hardware.camera.common-V2-ndk.so', 'android.hardware.camera.common-V1-ndk.so'),

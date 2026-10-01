@@ -1,4 +1,4 @@
-From fa6a5fa4e54522e166815d9fc32a0cac3d7f33b9 Mon Sep 17 00:00:00 2001
+From 61fa14f77d9cb7b3eb3599cbffb43addb59d44fb Mon Sep 17 00:00:00 2001
 From: Adarsh0127-Elite <adarshmoharana027@gmail.com>
 Date: Wed, 30 Sep 2026 15:36:24 +0000
 Subject: [PATCH 5/9] MiuiCamera: Unlock Leica custom interface and features
@@ -6,15 +6,14 @@ Subject: [PATCH 5/9] MiuiCamera: Unlock Leica custom interface and features
 - Unlock master Leica customization interface and features (LCC)
 - Unlock Leica Color/Vibrant styles (isSupportThemeCV)
 - Force Leica camera modes, styles, UI, filters, watermark and sounds
-- Force Leica device checks for Duchamp device class and superclass
+- Exclude physical telephoto overrides (a7, K6, q4) to avoid 2x zoom crash on Duchamp
 
 Signed-off-by: Adarsh0127-Elite <adarshmoharana027@gmail.com>
 ---
  smali_classes4/Te/b.smali                     | 48 ++-----------------
- ...掗揔掗掓揔掞掟掌掓掙掟揔掾掏掙排掛掗掊.smali |  4 +-
- ...驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali | 22 ++++-----
- ...쮣쮩쮯쯤쮸쮯쮮쮧쮣쯤쮉쮥쮧쮧쮥쮤쮁쮹쮯쮸쮣쮯쮹.smali |  2 +-
- 4 files changed, 17 insertions(+), 59 deletions(-)
+ ...掗揔掗掓揔掞掟掌掓掙掟揔掾掏掙排掛掗掊.smali |  2 +-
+ ...驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali | 14 +++---
+ 3 files changed, 11 insertions(+), 53 deletions(-)
 
 diff --git a/smali_classes4/Te/b.smali b/smali_classes4/Te/b.smali
 index 227d8a4d..993c7562 100644
@@ -88,18 +87,9 @@ index 227d8a4d..993c7562 100644
  
  .method public final j()I
 diff --git a/smali_classes4/掙掕掗揔掗掓揔掞掟掌掓掙掟揔掾掏掙排掛掗掊.smali b/smali_classes4/掙掕掗揔掗掓揔掞掟掌掓掙掟揔掾掏掙排掛掗掊.smali
-index 6c10fe3e..e30545b8 100644
+index 6c10fe3e..f48fdfb4 100644
 --- a/smali_classes4/掙掕掗揔掗掓揔掞掟掌掓掙掟揔掾掏掙排掛掗掊.smali
 +++ b/smali_classes4/掙掕掗揔掗掓揔掞掟掌掓掙掟揔掾掏掙排掛掗掊.smali
-@@ -896,7 +896,7 @@
- .method public final a7()Z
-     .locals 0
- 
--    const/4 p0, 0x0
-+    const/4 p0, 0x1
- 
-     return p0
- .end method
 @@ -904,7 +904,7 @@
  .method public final a9()Z
      .locals 0
@@ -110,7 +100,7 @@ index 6c10fe3e..e30545b8 100644
      return p0
  .end method
 diff --git a/smali_classes4/騟験騑驒騑騕驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali b/smali_classes4/騟験騑驒騑騕驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali
-index c4aebafc..cf0b4862 100644
+index c4aebafc..9cc0d778 100644
 --- a/smali_classes4/騟験騑驒騑騕驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali
 +++ b/smali_classes4/騟験騑驒騑騕驒騘騙騊騕騟騙驒騟験騑騑験騒驒騿験騑騑験騒.smali
 @@ -141,7 +141,7 @@
@@ -131,26 +121,8 @@ index c4aebafc..cf0b4862 100644
  
      return p0
  .end method
-@@ -1455,7 +1455,7 @@
- .method public K6()Z
-     .locals 0
- 
--    instance-of p0, p0, L仃仏仍于仍仉于仄仅他仉仃仅于代仈仅从仆仅从仇;
-+    const/4 p0, 0x1
- 
-     return p0
- .end method
 @@ -2197,7 +2197,7 @@
  .method public S2()Z
-     .locals 0
- 
--    instance-of p0, p0, L仃仏仍于仍仉于仄仅他仉仃仅于代仈仅从仆仅从仇;
-+    const/4 p0, 0x1
- 
-     return p0
- .end method
-@@ -2998,7 +2998,7 @@
- .method public a7()Z
      .locals 0
  
 -    instance-of p0, p0, L仃仏仍于仍仉于仄仅他仉仃仅于代仈仅从仆仅从仇;
@@ -176,26 +148,8 @@ index c4aebafc..cf0b4862 100644
  
      return p0
  .end method
-@@ -3605,7 +3605,7 @@
- .method public g4()Z
-     .locals 0
- 
--    instance-of p0, p0, L仃仏仍于仍仉于仄仅他仉仃仅于代仈仅从仆仅从仇;
-+    const/4 p0, 0x1
- 
-     return p0
- .end method
 @@ -4485,7 +4485,7 @@
  .method public p4()Z
-     .locals 0
- 
--    instance-of p0, p0, L仃仏仍于仍仉于仄仅他仉仃仅于代仈仅从仆仅从仇;
-+    const/4 p0, 0x1
- 
-     return p0
- .end method
-@@ -4585,7 +4585,7 @@
- .method public q4()Z
      .locals 0
  
 -    instance-of p0, p0, L仃仏仍于仍仉于仄仅他仉仃仅于代仈仅从仆仅从仇;
@@ -212,19 +166,5 @@ index c4aebafc..cf0b4862 100644
  
      return p0
  .end method
-diff --git a/smali_classes4/쮩쮥쮧쯤쮧쮣쯤쮮쮯쮼쮣쮩쮯쯤쮸쮯쮮쮧쮣쯤쮉쮥쮧쮧쮥쮤쮁쮹쮯쮸쮣쮯쮹.smali b/smali_classes4/쮩쮥쮧쯤쮧쮣쯤쮮쮯쮼쮣쮩쮯쯤쮸쮯쮮쮧쮣쯤쮉쮥쮧쮧쮥쮤쮁쮹쮯쮸쮣쮯쮹.smali
-index 6e9e82fc..2b3f8b60 100644
---- a/smali_classes4/쮩쮥쮧쯤쮧쮣쯤쮮쮯쮼쮣쮩쮯쯤쮸쮯쮮쮧쮣쯤쮉쮥쮧쮧쮥쮤쮁쮹쮯쮸쮣쮯쮹.smali
-+++ b/smali_classes4/쮩쮥쮧쯤쮧쮣쯤쮮쮯쮼쮣쮩쮯쯤쮸쮯쮮쮧쮣쯤쮉쮥쮧쮧쮥쮤쮁쮹쮯쮸쮣쮯쮹.smali
-@@ -1756,7 +1756,7 @@
- .method public q4()Z
-     .locals 0
- 
--    instance-of p0, p0, L맸맴맶릵맶맲릵맿맾맭맲맸맾릵막맴맯맳맰맴맄맫맩맴;
-+    const/4 p0, 0x1
- 
-     return p0
- .end method
 -- 
 2.43.0
-
