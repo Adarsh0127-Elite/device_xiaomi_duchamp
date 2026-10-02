@@ -2,6 +2,9 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.camera.overlay.icon">
+    <uses-sdk
+        android:minSdkVersion="28"
+        android:targetSdkVersion="28" />
     <overlay
         android:isStatic="true"
         android:priority="800"
