@@ -234,6 +234,8 @@ blob_fixups: blob_fixups_user_type = {
 
      'system_ext/priv-app/MiuiCamera/MiuiCamera.apk': blob_fixup()
         .apktool_patch('blob-patches/MIUICamera/'),
+     'vendor/etc/init/tee-supplicant.rc': blob_fixup()
+        .regex_replace('chown system system /dev/ufs-bsg0', 'chown root system /dev/ufs-bsg0'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
